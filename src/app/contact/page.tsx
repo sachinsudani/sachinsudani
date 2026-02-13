@@ -6,7 +6,7 @@ import {
   scrollSlideInRight,
 } from "@/utils/animations";
 import { motion } from "framer-motion";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import {
   FaDownload,
   FaEnvelope,
@@ -33,12 +33,20 @@ export default function Contact() {
   });
   const [status, setStatus] = useState<FormStatus>("idle");
 
+  // Auto-dismiss success/error toast after 5 seconds
+  useEffect(() => {
+    if (status === "success" || status === "error") {
+      const timer = setTimeout(() => setStatus("idle"), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [status]);
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setStatus("loading");
 
     try {
-        // Send email via Web3Forms
+      // Send email via Web3Forms
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
