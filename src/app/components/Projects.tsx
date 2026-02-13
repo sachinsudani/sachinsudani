@@ -1,107 +1,112 @@
 "use client";
 
 import { projects } from "@/contents/projects";
-import { cardHoverSmall, fadeInUp, staggerContainer } from "@/utils/animations";
+import { scrollFadeInUp } from "@/utils/animations";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import Link from "next/link";
+import { FaArrowRight, FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 
 export default function Projects() {
-  return (
-    <section className="py-20">
-      <div className="container max-w-7xl mx-auto px-4">
-        <motion.h2
-          className="text-3xl font-bold mb-12 text-center"
-          {...fadeInUp}
-        >
-          Featured Projects
-        </motion.h2>
+  const featuredProjects = projects.slice(0, 3);
 
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          variants={staggerContainer}
-          initial="initial"
-          animate="animate"
-        >
-          {projects.map((project) => (
+  return (
+    <section className="py-20 bg-slate-50/50 dark:bg-dark/30">
+      <div className="container max-w-7xl mx-auto px-4">
+        <motion.div className="text-center mb-16" {...scrollFadeInUp}>
+          <span className="inline-block px-4 py-1.5 bg-primary/10 dark:bg-primary/20 rounded-full text-primary text-sm font-medium mb-4">
+            Portfolio
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Featured <span className="gradient-text">Projects</span>
+          </h2>
+          <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            A selection of projects I&apos;ve worked on, showcasing my expertise in full-stack development
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {featuredProjects.map((project, index) => (
             <motion.article
               key={project.title}
-              className="bg-white dark:bg-dark/50 rounded-lg shadow-md p-6"
-              variants={fadeInUp}
-              {...cardHoverSmall}
+              className="card overflow-hidden group"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ scale: 1.02, y: -5 }}
             >
-              <div className="relative aspect-video mb-4 rounded-lg overflow-hidden">
+              <div className="relative aspect-video overflow-hidden">
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
-              <motion.h3
-                className="text-xl font-semibold mb-2"
-                whileHover={{ x: 5 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                {project.title}
-              </motion.h3>
-              <motion.p
-                className="text-gray-600 dark:text-gray-300 mb-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
-              >
-                {project.description}
-              </motion.p>
-              <motion.div
-                className="flex flex-wrap gap-2 mb-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-              >
-                {project.technologies.map((tech) => (
-                  <motion.span
-                    key={tech}
-                    className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {tech}
-                  </motion.span>
-                ))}
-              </motion.div>
-              <motion.div
-                className="flex gap-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
-              >
-                <motion.a
-                  href={project.githubLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-secondary hover:text-primary transition-colors"
-                  whileHover={{ x: 5 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <FaGithub className="h-5 w-5" />
-                  <span>Code</span>
-                </motion.a>
-                <motion.a
-                  href={project.demoLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-secondary hover:text-primary transition-colors"
-                  whileHover={{ x: 5 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <FaExternalLinkAlt className="h-5 w-5" />
-                  <span>Live Demo</span>
-                </motion.a>
-              </motion.div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-2 mb-5">
+                  {project.technologies.slice(0, 4).map((tech) => (
+                    <span key={tech} className="skill-badge text-xs">
+                      {tech}
+                    </span>
+                  ))}
+                  {project.technologies.length > 4 && (
+                    <span className="skill-badge text-xs">
+                      +{project.technologies.length - 4}
+                    </span>
+                  )}
+                </div>
+                <div className="flex gap-4">
+                  {project.githubLink && (
+                    <motion.a
+                      href={project.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"
+                      whileHover={{ x: 3 }}
+                    >
+                      <FaGithub className="w-4 h-4" />
+                      <span>Code</span>
+                    </motion.a>
+                  )}
+                  {project.demoLink && (
+                    <motion.a
+                      href={project.demoLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"
+                      whileHover={{ x: 3 }}
+                    >
+                      <FaExternalLinkAlt className="w-4 h-4" />
+                      <span>Live Demo</span>
+                    </motion.a>
+                  )}
+                </div>
+              </div>
             </motion.article>
           ))}
+        </div>
+
+        <motion.div
+          className="text-center mt-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+        >
+          <Link href="/projects" className="btn btn-primary inline-flex items-center gap-2">
+            View All Projects
+            <FaArrowRight className="w-4 h-4" />
+          </Link>
         </motion.div>
       </div>
     </section>

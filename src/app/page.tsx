@@ -6,8 +6,6 @@ export default function Home() {
     <main>
       <Hero />
       <Projects />
-      {/* <Blogs /> */}
-      {/* <Newsletter /> */}
     </main>
   );
 }

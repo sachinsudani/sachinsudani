@@ -17,9 +17,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio Website using Next.js, Tailwind CSS, and Framer Motion",
+  title: "Sachin Sudani | Full Stack Developer | Node.js & React Expert",
   description:
-    "This is a portfolio website for developers to showcase their projects and skills.",
+    "Mid-Senior Full Stack Developer with 4+ years of experience building scalable web applications. Expert in Node.js, React, Next.js, TypeScript, MongoDB, and AWS. Currently at Xenett.",
+  keywords: ["Full Stack Developer", "Node.js", "React", "Next.js", "TypeScript", "MongoDB", "AWS", "Software Engineer"],
+  authors: [{ name: "Sachin Sudani" }],
+  openGraph: {
+    title: "Sachin Sudani | Full Stack Developer",
+    description: "Mid-Senior Full Stack Developer specializing in Node.js, React, and cloud technologies.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
