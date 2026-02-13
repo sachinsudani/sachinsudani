@@ -38,15 +38,27 @@ export default function Contact() {
     setStatus("loading");
 
     try {
-      const response = await fetch("/api/contact", {
+        // Send email via Web3Forms
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `Portfolio Contact: Message from ${formData.name}`,
+        }),
       });
 
-      if (!response.ok) throw new Error("Failed to send message");
+      const result = await response.json();
+
+      if (!result.success) {
+        throw new Error(result.message || "Failed to send message");
+      }
 
       setStatus("success");
       setFormData({ name: "", email: "", message: "" });
