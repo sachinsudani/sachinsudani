@@ -1,12 +1,19 @@
 "use client";
 
 import {
+  certifications,
+  education,
+  experience,
+  skills,
+} from "@/contents/about";
+import {
   scrollFadeInUp,
   scrollSlideInLeft,
   scrollSlideInRight,
 } from "@/utils/animations";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { IconType } from "react-icons";
 import {
   FaCheckCircle,
   FaCode,
@@ -17,72 +24,11 @@ import {
   FaTools,
 } from "react-icons/fa";
 
-const skills = [
-  {
-    category: "Frontend",
-    icon: FaCode,
-    items: [
-      { name: "React.js & Next.js", level: 95 },
-      { name: "TypeScript", level: 90 },
-      { name: "Tailwind CSS", level: 90 },
-      { name: "HTML5 & CSS3", level: 95 },
-    ],
-  },
-  {
-    category: "Backend",
-    icon: FaServer,
-    items: [
-      { name: "Node.js & Express.js", level: 95 },
-      { name: "MongoDB & Mongoose", level: 90 },
-      { name: "PostgreSQL", level: 80 },
-      { name: "REST APIs & GraphQL", level: 90 },
-    ],
-  },
-  {
-    category: "DevOps & Tools",
-    icon: FaTools,
-    items: [
-      { name: "Docker & AWS", level: 85 },
-      { name: "Git & GitHub", level: 95 },
-      { name: "CI/CD Pipelines", level: 80 },
-      { name: "AI Tools & RAG", level: 85 },
-    ],
-  },
-];
-
-const certifications = [
-  {
-    title: "Full Stack Developer",
-    issuer: "Udemy",
-    image: "/certifications/full-stack.png",
-  },
-  {
-    title: "AWS Summit 2025 Participant",
-    issuer: "Amazon Web Services",
-    image: "/certifications/aws-summit.png",
-  },
-  {
-    title: "AWS Foundations: Cloud Practitioner Essentials",
-    issuer: "Gujarat Technological University",
-    image: "/certifications/aws-foundations.png",
-  },
-];
-
-const xenettAchievements = [
-  "Handled Moniflo smoothly in Production and managed full Sprint delivery",
-  "Implemented Google and Microsoft OAuth Flow using AI - the only team member capable of building full features with AI",
-  "Delivered 3 Critical CRM Integrations within a single week",
-  "Designed and implemented Inter Company feature (Model & APIs)",
-  "Built Complex Entries Check List and Trend Feature under tight deadline",
-  "Implemented Clearing Account feature from scratch (Model & APIs)",
-  "Fixed critical Accounting upload issue as a Problem Solver",
-  "Updated NPM Packages to latest versions across Xenett, Central, CP without breaking changes",
-  "Added nodemon configuration for improved development workflow in Central and CP Service",
-  "Solved Production Issue: P&L and BS SDK to REST migration",
-  "Resolved Production Memory Leak Issue",
-  "Set up Test Case Infrastructure and implemented Test Driven Development",
-  "Fixed critical Production Payroll Issue",
-];
+const iconMap: Record<string, IconType> = {
+  frontend: FaCode,
+  backend: FaServer,
+  devops: FaTools,
+};
 
 export default function About() {
   return (
@@ -164,47 +110,50 @@ export default function About() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {skills.map((skillGroup, index) => (
-            <motion.div
-              key={skillGroup.category}
-              className="card p-6"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ scale: 1.05 }}
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-3 bg-linear-to-br from-primary to-accent rounded-xl">
-                  <skillGroup.icon className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-xl font-bold">{skillGroup.category}</h3>
-              </div>
-              <div className="space-y-4">
-                {skillGroup.items.map((skill) => (
-                  <div key={skill.name}>
-                    <div className="flex justify-between mb-2">
-                      <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
-                        {skill.name}
-                      </span>
-                      <span className="text-sm text-primary font-semibold">
-                        {skill.level}%
-                      </span>
-                    </div>
-                    <div className="h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
-                      <motion.div
-                        className="h-full bg-linear-to-r from-primary to-accent rounded-full"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.2 }}
-                      />
-                    </div>
+          {skills.map((skillGroup, index) => {
+            const Icon = iconMap[skillGroup.iconName];
+            return (
+              <motion.div
+                key={skillGroup.category}
+                className="card p-6"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 bg-linear-to-br from-primary to-accent rounded-xl">
+                    <Icon className="w-6 h-6 text-white" />
                   </div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+                  <h3 className="text-xl font-bold">{skillGroup.category}</h3>
+                </div>
+                <div className="space-y-4">
+                  {skillGroup.items.map((skill) => (
+                    <div key={skill.name}>
+                      <div className="flex justify-between mb-2">
+                        <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                          {skill.name}
+                        </span>
+                        <span className="text-sm text-primary font-semibold">
+                          {skill.level}%
+                        </span>
+                      </div>
+                      <div className="h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                        <motion.div
+                          className="h-full bg-linear-to-r from-primary to-accent rounded-full"
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${skill.level}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1, delay: 0.2 }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </motion.section>
 
@@ -220,89 +169,70 @@ export default function About() {
         </motion.div>
 
         <div className="max-w-4xl mx-auto space-y-8">
-          {/* Xenett */}
-          <motion.div className="card p-8" {...scrollSlideInLeft}>
-            <div className="flex flex-col md:flex-row md:items-start gap-4 mb-6">
-              <div className="p-3 bg-linear-to-br from-primary to-accent rounded-xl shrink-0">
-                <FaLaptopCode className="w-6 h-6 text-white" />
-              </div>
-              <div className="flex-1">
-                <h3 className="text-xl font-bold">
-                  Mid Senior Full Stack Developer
-                </h3>
-                <p className="text-primary font-semibold">
-                  Xenett • 2024 - Present
-                </p>
-                <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">
-                  Practice management software for accounting workflow
-                  automation
-                </p>
-              </div>
-              <span className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full text-sm font-medium">
-                Current
-              </span>
-            </div>
-            <div className="grid md:grid-cols-2 gap-3">
-              {xenettAchievements.map((achievement, idx) => (
-                <motion.div
-                  key={idx}
-                  className="flex items-start gap-2"
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.05 }}
+          {experience.map((exp, index) => (
+            <motion.div
+              key={exp.company}
+              className="card p-8"
+              {...(index % 2 === 0 ? scrollSlideInLeft : scrollSlideInRight)}
+            >
+              <div className="flex flex-col md:flex-row md:items-start gap-4 mb-6">
+                <div
+                  className={`p-3 rounded-xl shrink-0 ${
+                    exp.isCurrent
+                      ? "bg-linear-to-br from-primary to-accent"
+                      : "bg-linear-to-br from-slate-600 to-slate-800"
+                  }`}
                 >
-                  <FaCheckCircle className="w-4 h-4 text-green-500 mt-1 shrink-0" />
-                  <span className="text-sm text-slate-600 dark:text-slate-400">
-                    {achievement}
+                  {exp.isCurrent ? (
+                    <FaLaptopCode className="w-6 h-6 text-white" />
+                  ) : (
+                    <FaCode className="w-6 h-6 text-white" />
+                  )}
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold">{exp.title}</h3>
+                  <p className="text-primary font-semibold">
+                    {exp.company} • {exp.period}
+                  </p>
+                  <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">
+                    {exp.description}
+                  </p>
+                </div>
+                {exp.isCurrent && (
+                  <span className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full text-sm font-medium">
+                    Current
                   </span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* BKSoftech */}
-          <motion.div className="card p-8" {...scrollSlideInRight}>
-            <div className="flex flex-col md:flex-row md:items-start gap-4 mb-6">
-              <div className="p-3 bg-linear-to-br from-slate-600 to-slate-800 rounded-xl shrink-0">
-                <FaCode className="w-6 h-6 text-white" />
+                )}
               </div>
-              <div className="flex-1">
-                <h3 className="text-xl font-bold">
-                  Junior Full Stack Developer
-                </h3>
-                <p className="text-primary font-semibold">
-                  BKSoftech • 2022 - 2024
-                </p>
-                <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">
-                  IT Services & Software Development Company
-                </p>
+              <div
+                className={
+                  exp.achievements.length > 5
+                    ? "grid md:grid-cols-2 gap-3"
+                    : "space-y-3"
+                }
+              >
+                {exp.achievements.map((achievement, idx) => (
+                  <motion.div
+                    key={idx}
+                    className="flex items-start gap-2"
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.05 }}
+                  >
+                    <FaCheckCircle
+                      className={`w-4 h-4 mt-1 shrink-0 ${
+                        exp.isCurrent ? "text-green-500" : "text-primary"
+                      }`}
+                    />
+                    <span className="text-sm text-slate-600 dark:text-slate-400">
+                      {achievement}
+                    </span>
+                  </motion.div>
+                ))}
               </div>
-            </div>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-2">
-                <FaCheckCircle className="w-4 h-4 text-primary mt-1 shrink-0" />
-                <span className="text-slate-600 dark:text-slate-400">
-                  Built real-world backend services with focus on modular
-                  architecture, database relationships, and performance tuning
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <FaCheckCircle className="w-4 h-4 text-primary mt-1 shrink-0" />
-                <span className="text-slate-600 dark:text-slate-400">
-                  Contributed to production features in live projects using REST
-                  API design and data flow management best practices
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <FaCheckCircle className="w-4 h-4 text-primary mt-1 shrink-0" />
-                <span className="text-slate-600 dark:text-slate-400">
-                  Led development of features for businesses and reputed
-                  individuals, implementing dynamic business feeds
-                </span>
-              </li>
-            </ul>
-          </motion.div>
+            </motion.div>
+          ))}
         </div>
       </motion.section>
 
@@ -368,15 +298,12 @@ export default function About() {
               <FaGraduationCap className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h3 className="text-xl font-bold">
-                Bachelor of Computer Application
-              </h3>
+              <h3 className="text-xl font-bold">{education.degree}</h3>
               <p className="text-primary font-semibold">
-                Saurashtra University • 2019 - 2022
+                {education.institution} • {education.period}
               </p>
               <p className="text-slate-600 dark:text-slate-400 mt-2">
-                Graduated with honors. Focused on software engineering, web
-                development, and database management systems.
+                {education.description}
               </p>
             </div>
           </div>
