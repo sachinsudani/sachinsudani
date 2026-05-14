@@ -1,49 +1,45 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { JetBrains_Mono, Manrope, Space_Grotesk } from "next/font/google";
 import { ReactNode } from "react";
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
 import { ThemeProvider } from "./context/ThemeContext";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
-  title: "Sachin Sudani | Full Stack Developer | Node.js & React Expert",
+  title: "Sachin Sudani — Full Stack Developer",
   description:
-    "Mid-Senior Full Stack Developer with 4+ years of experience building scalable web applications. Expert in Node.js, React, Next.js, TypeScript, MongoDB, and AWS. Currently at Xenett.",
-  keywords: ["Full Stack Developer", "Node.js", "React", "Next.js", "TypeScript", "MongoDB", "AWS", "Software Engineer"],
+    "Mid-Senior Full Stack Developer with 4+ years building production Node.js, TypeScript & AWS systems. Currently engineering accounting automation at Xenett.",
+  keywords: ["Full Stack Developer", "Node.js", "TypeScript", "React", "Next.js", "MongoDB", "AWS", "Backend"],
   authors: [{ name: "Sachin Sudani" }],
   openGraph: {
-    title: "Sachin Sudani | Full Stack Developer",
-    description: "Mid-Senior Full Stack Developer specializing in Node.js, React, and cloud technologies.",
+    title: "Sachin Sudani — Full Stack Developer",
+    description: "Mid-Senior Full Stack Developer specializing in Node.js, TypeScript, and cloud-scale backend systems.",
     type: "website",
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en">
-      <body
-        className={`bg-white transition-colors dark:bg-gray-900 dark:text-white ${geistSans.variable} ${geistMono.variable}`}
-      >
-        <ThemeProvider>
-          <Navbar />
-          <main className="min-h-screen pt-24">{children}</main>
-          <Footer />
-        </ThemeProvider>
+    <html lang="en" data-theme="light">
+      <body className={`${spaceGrotesk.variable} ${manrope.variable} ${jetbrainsMono.variable}`}>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

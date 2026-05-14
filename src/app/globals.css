@@ -1,135 +1,160 @@
 @import "tailwindcss";
 
-@theme {
-  --color-primary: #6366f1;
-  --color-primary-light: #818cf8;
-  --color-primary-dark: #4f46e5;
-  --color-secondary: #64748b;
-  --color-accent: #06b6d4;
-  --color-dark: #0f172a;
-  --color-dark-card: #1e293b;
-  --color-light: #f8fafc;
-  --color-text: #0f172a;
-  --color-bg: #ffffff;
-
-  --font-sans: 'Inter', sans-serif;
-
-  --animation-fade-in: fadeIn 0.5s ease-in-out;
-  --animation-slide-up: slideUp 0.5s ease-in-out;
+/* ─── DESIGN TOKENS ─── */
+:root {
+  --font-heading: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Manrope", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", monospace;
+  --radius: 14px;
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --max-width: 1140px;
 }
 
+[data-theme="light"] {
+  --bg: #faf9f7;
+  --bg-elevated: #ffffff;
+  --bg-subtle: #f3f1ee;
+  --text: #111111;
+  --text-secondary: #555555;
+  --text-muted: #999999;
+  --accent: #0369a1;
+  --accent-light: rgba(3, 105, 161, 0.1);
+  --border: #e4e2dd;
+  --border-hover: #ccc9c2;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
 
-@custom-variant dark (&:where(.dark, .dark *));
+[data-theme="dark"] {
+  --bg: #0e0e0e;
+  --bg-elevated: #1a1a1a;
+  --bg-subtle: #151515;
+  --text: #f0f0f0;
+  --text-secondary: #a0a0a0;
+  --text-muted: #666666;
+  --accent: #38bdf8;
+  --accent-light: rgba(56, 189, 248, 0.12);
+  --border: #2a2a2a;
+  --border-hover: #3a3a3a;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition:
+    background var(--transition),
+    color var(--transition);
+}
+
+::selection {
+  background: var(--accent);
+  color: white;
+}
 
 a {
-  transition: all 0.2s ease;
+  transition: color 0.2s ease;
 }
 
-/* Gradient backgrounds */
-.gradient-bg {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-.gradient-text {
-  background: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.glass-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.dark .glass-card {
-  background: rgba(30, 41, 59, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.hero-gradient {
-  background: radial-gradient(ellipse at top, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-              radial-gradient(ellipse at bottom right, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
-}
-
-.dark .hero-gradient {
-  background: radial-gradient(ellipse at top, rgba(99, 102, 241, 0.2) 0%, transparent 50%),
-              radial-gradient(ellipse at bottom right, rgba(6, 182, 212, 0.15) 0%, transparent 50%);
-}
-
-@layer components {
-  .container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
-  
-  .btn {
-    @apply px-6 py-3 rounded-xl font-semibold transition-all duration-300;
-  }
-  
-  .btn-primary {
-    @apply bg-linear-to-r from-primary to-accent text-white hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5;
-  }
-  
-  .btn-secondary {
-    @apply bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700;
-  }
-  
-  .btn-outline {
-    @apply border-2 border-primary text-primary hover:bg-primary hover:text-white;
-  }
-  
-  .section-title {
-    @apply text-3xl md:text-4xl font-bold mb-8 text-center;
-  }
-  
-  .card {
-    @apply bg-white dark:bg-dark-card rounded-2xl shadow-lg shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-800 transition-all duration-300;
-  }
-  
-  .card:hover {
-    @apply shadow-xl shadow-slate-300/50 dark:shadow-primary/5 -translate-y-1;
-  }
-  
-  .skill-badge {
-    @apply px-4 py-2 bg-linear-to-r from-primary/10 to-accent/10 text-primary dark:text-primary-light rounded-full text-sm font-medium border border-primary/20;
-  }
-} 
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
+/* ─── KEYFRAMES ─── */
+@keyframes pulse-ring {
   to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(20px);
+    transform: scale(2.5);
     opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
   }
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-6px);
   }
 }
 
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .sec-grid-responsive {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
   }
-  50% {
-    box-shadow: 0 0 40px rgba(99, 102, 241, 0.6);
+
+  .wid-cards-responsive {
+    grid-template-columns: 1fr !important;
   }
+
+  .proj-card-responsive {
+    grid-template-columns: 1fr !important;
+  }
+
+  .proj-card-responsive .proj-img-responsive {
+    aspect-ratio: 16 / 9;
+  }
+
+  .contact-row-responsive {
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+
+  .section-pad {
+    padding: 0 20px !important;
+  }
+
+  .hero-section-responsive {
+    padding: 120px 20px 80px !important;
+    min-height: auto !important;
+  }
+
+  .nav-links-hide {
+    display: none !important;
+  }
+
+  .nav-inner-responsive {
+    padding: 0 20px !important;
+  }
+
+  .footer-inner-responsive {
+    padding: 0 20px !important;
+  }
+}
+
+/* ─── SCROLL REVEAL ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 {
+  transition-delay: 0.1s;
+}
+.reveal-delay-2 {
+  transition-delay: 0.2s;
+}
+.reveal-delay-3 {
+  transition-delay: 0.3s;
 }
