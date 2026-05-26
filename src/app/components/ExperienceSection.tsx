@@ -9,12 +9,12 @@ const EXPERIENCE = [
     period: "2024 — Present",
     desc: "Practice management software for accounting workflow automation.",
     highlights: [
-      "Implemented Google & Microsoft OAuth flow using AI — the only team member capable of shipping full features with AI",
+      "Built Google & Microsoft OAuth using AI — only team member shipping full features with AI",
       "Delivered 3 critical CRM integrations within a single week",
-      "Designed and implemented Inter Company, Entries Checklist & Trend, and Clearing Account features (models + APIs) under tight deadlines",
-      "Diagnosed and fixed production P&L/BS SDK→REST migration, memory leak, and payroll issue",
-      "Set up CI/CD pipelines across all services; configured Playwright, Copilot, and Claude for the team",
-      "Led Email & Drive integration (Google & Microsoft) with AI-aggressive development",
+      "Designed and implemented Inter Company, Entries Checklist & Trend, and Clearing Account features end-to-end",
+      "Diagnosed and fixed production P&L/BS SDK→REST migration, memory leak, and payroll issues",
+      "Set up CI/CD pipelines across all services; configured Playwright, Copilot, and Claude",
+      "Led Email & Drive integration with AI-aggressive development, maximizing token efficiency",
     ],
   },
   {

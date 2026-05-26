@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 const TECH = [
   "Node.js", "Express", "TypeScript", "React", "Next.js",
   "MongoDB", "PostgreSQL", "Docker", "AWS", "GraphQL", "REST APIs", "CI/CD",
+  "LLM / RAG", "Embeddings", "AI Agents", "Voice AI", "Prompt Engineering",
 ];
 
 const CREDS = ["AWS Summit 2025", "AWS Cloud Practitioner"];
@@ -83,16 +84,17 @@ export default function AboutSection() {
                 marginBottom: "14px",
               }}
             >
-              I&apos;m a mid-senior full stack developer who specializes in building{" "}
+              I&apos;m a full stack developer and{" "}
               <strong style={{ color: "var(--text)", fontWeight: 600 }}>
-                scalable backend systems
-              </strong>
-              . At{" "}
+                AI engineer
+              </strong>{" "}
+              who builds production systems that scale. At{" "}
               <strong style={{ color: "var(--text)", fontWeight: 600 }}>
                 Xenett
               </strong>
               , I lead backend development — architecting microservices, building
-              complex integrations, and solving production-critical problems.
+              complex integrations, and shipping AI-powered features that
+              solve real accounting problems.
             </p>
             <p
               style={{
@@ -102,10 +104,10 @@ export default function AboutSection() {
                 maxWidth: "580px",
               }}
             >
-              I care about clean code, type safety, and systems that handle
-              real-world complexity. From OAuth flows and CRM integrations to
-              accounting engines and memory leak debugging — I ship production
-              features that matter.
+              Beyond the backend, I build with LLMs — RAG pipelines, AI agents,
+              voice systems, and prompt engineering. I use AI aggressively in
+              my own workflow too: I&apos;m the only engineer on my team shipping
+              full features end-to-end with AI tooling.
             </p>
 
             {/* Tech chips */}

@@ -37,6 +37,17 @@ const CARDS = [
     desc: "Docker containerization, AWS infrastructure (ECS, AppRunner, Lambda, S3), CI/CD pipelines, and production incident response.",
     delay: "reveal-delay-3",
   },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20">
+        <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z" />
+        <path d="M12 8v4l3 3" />
+      </svg>
+    ),
+    title: "AI & LLM Engineering",
+    desc: "Building RAG pipelines, AI agents, voice systems, and LLM-powered features. Prompt engineering and token-efficient development with GPT, Claude, and open-source models.",
+    delay: "reveal-delay-3",
+  },
 ];
 
 export default function WhatIDo() {
@@ -100,7 +111,7 @@ export default function WhatIDo() {
           className="wid-cards-responsive"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
+            gridTemplateColumns: "repeat(4, 1fr)",
             gap: "20px",
             marginTop: "48px",
           }}

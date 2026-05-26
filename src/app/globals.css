@@ -99,7 +99,7 @@ a {
   }
 
   .wid-cards-responsive {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr 1fr !important;
   }
 
   .proj-card-responsive {
@@ -130,6 +130,12 @@ a {
 
   .footer-inner-responsive {
     padding: 0 20px !important;
+  }
+}
+
+@media (max-width: 540px) {
+  .wid-cards-responsive {
+    grid-template-columns: 1fr !important;
   }
 }
 

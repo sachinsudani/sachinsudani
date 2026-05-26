@@ -43,7 +43,20 @@ const PROJECTS = [
     image: "/projects/the-patidars.png",
   },
   {
-    num: "04 — Full Stack",
+    num: "04 — Client Project",
+    title: "JDPR & Co. LLP",
+    desc: "End-to-end website for a professional services firm — built solo from design to deployment. Optimized for SEO, performance, and conversion with a clean editorial aesthetic.",
+    metrics: [
+      { val: "Solo", label: "End-to-End" },
+      { val: "Live", label: "In Production" },
+      { val: "SEO", label: "Optimized" },
+    ],
+    tech: ["Next.js 14", "Tailwind CSS", "Framer Motion", "TypeScript", "Vercel"],
+    link: { href: "https://jdprllp.com", label: "Visit JDPR" },
+    image: "/projects/jdpr.png",
+  },
+  {
+    num: "05 — Full Stack",
     title: "E-commerce Platform",
     desc: "A responsive e-commerce application with product browsing, cart management, and Stripe-powered checkout — built end-to-end with Node.js and MongoDB.",
     metrics: [

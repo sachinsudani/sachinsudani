@@ -59,7 +59,7 @@ export default function HeroSection() {
               }}
             />
           </span>
-          Available for opportunities
+          Full Stack Developer · AI Engineer
         </div>
 
         {/* Heading */}
@@ -73,11 +73,10 @@ export default function HeroSection() {
             marginBottom: "24px",
           }}
         >
-          I build backend
+          I build systems that
           <br />
-          systems that
-          <br />
-          <span style={{ color: "var(--accent)" }}>scale.</span>
+          scale —{" "}
+          <span style={{ color: "var(--accent)" }}>with AI.</span>
         </h1>
 
         {/* Description */}
@@ -90,9 +89,10 @@ export default function HeroSection() {
             margin: "0 auto 36px",
           }}
         >
-          4+ years shipping production Node.js, TypeScript &amp; AWS at scale.
-          Currently engineering accounting automation at Xenett — solving
-          real-world complexity with clean architecture.
+          4+ years shipping production Node.js, TypeScript &amp; AWS at scale —
+          plus 3+ years building LLM-powered features, AI agents, and
+          voice systems. Currently at Xenett, engineering automation with clean
+          architecture and AI at the core.
         </p>
 
         {/* Actions */}
