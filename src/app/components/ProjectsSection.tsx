@@ -1,7 +1,10 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
-import { forwardRef, useEffect, useRef } from "react";
+import { forwardRef, useRef } from "react";
+
+const ease = [0.4, 0, 0.2, 1] as const;
 
 const PROJECTS = [
   {
@@ -69,35 +72,30 @@ const PROJECTS = [
   },
 ];
 
+const ExternalLinkIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14">
+    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+    <polyline points="15 3 21 3 21 9" />
+    <line x1="10" y1="14" x2="21" y2="3" />
+  </svg>
+);
+
 export default function ProjectsSection() {
-  const headerRef = useRef<HTMLDivElement>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  useEffect(() => {
-    const elements = [headerRef.current, ...cardRefs.current].filter(Boolean);
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("visible");
-        });
-      },
-      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
-    );
-    elements.forEach((el) => el && observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section id="projects" style={{ padding: "120px 0" }}>
       <div style={{ maxWidth: "var(--max-width)", margin: "0 auto", padding: "0 40px" }}>
+
         {/* Header */}
         <div
-          ref={headerRef}
-          className="reveal sec-grid-responsive"
+          className="sec-grid-responsive"
           style={{ display: "grid", gridTemplateColumns: "0.38fr 1fr", gap: "72px" }}
         >
           <div>
-            <div
+            <motion.div
+              initial={{ opacity: 0, x: -16 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, ease }}
               style={{
                 fontFamily: "var(--font-mono)",
                 fontSize: "11px",
@@ -109,8 +107,12 @@ export default function ProjectsSection() {
               }}
             >
               Selected Work
-            </div>
-            <div
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.6, ease, delay: 0.1 }}
               style={{
                 fontFamily: "var(--font-heading)",
                 fontSize: "32px",
@@ -120,9 +122,13 @@ export default function ProjectsSection() {
               }}
             >
               Case Studies
-            </div>
+            </motion.div>
           </div>
-          <p
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.6, ease, delay: 0.15 }}
             style={{
               fontSize: "16px",
               color: "var(--text-secondary)",
@@ -131,22 +137,14 @@ export default function ProjectsSection() {
               alignSelf: "center",
             }}
           >
-            Production projects I&apos;ve built or led — with real impact metrics and
-            technical depth.
-          </p>
+            Production projects I&apos;ve built or led — with real impact metrics and technical depth.
+          </motion.p>
         </div>
 
         {/* Cards */}
-        <div
-          style={{ display: "flex", flexDirection: "column", gap: "32px", marginTop: "64px" }}
-        >
+        <div style={{ display: "flex", flexDirection: "column", gap: "32px", marginTop: "64px" }}>
           {PROJECTS.map((proj, i) => (
-            <ProjectCard
-              key={proj.title}
-              proj={proj}
-              even={i % 2 === 1}
-              ref={(el) => { cardRefs.current[i] = el; }}
-            />
+            <ProjectCard key={proj.title} proj={proj} index={i} even={i % 2 === 1} />
           ))}
         </div>
       </div>
@@ -154,24 +152,24 @@ export default function ProjectsSection() {
   );
 }
 
-const ExternalLinkIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14">
-    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
-    <polyline points="15 3 21 3 21 9" />
-    <line x1="10" y1="14" x2="21" y2="3" />
-  </svg>
-);
-
-const ProjectCard = forwardRef<
-  HTMLDivElement,
-  { proj: (typeof PROJECTS)[0]; even: boolean }
->(function ProjectCard({ proj, even }, ref) {
+function ProjectCard({
+  proj,
+  index,
+  even,
+}: {
+  proj: (typeof PROJECTS)[0];
+  index: number;
+  even: boolean;
+}) {
   const imgRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div
-      ref={ref}
-      className="reveal proj-card-responsive"
+    <motion.div
+      initial={{ opacity: 0, x: even ? 40 : -40 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.65, ease, delay: index * 0.04 }}
+      className="proj-card-responsive"
       style={{
         display: "grid",
         gridTemplateColumns: even ? "1fr 1.1fr" : "1.1fr 1fr",
@@ -179,12 +177,12 @@ const ProjectCard = forwardRef<
         border: "1px solid var(--border)",
         borderRadius: "16px",
         overflow: "hidden",
-        transition: "all 0.35s",
+        transition: "box-shadow 0.35s, border-color 0.35s, transform 0.35s",
       }}
+      whileHover={{ y: -4, transition: { type: "spring", stiffness: 260, damping: 22 } }}
       onMouseEnter={(e) => {
         const el = e.currentTarget as HTMLElement;
         el.style.boxShadow = "var(--shadow-lg)";
-        el.style.transform = "translateY(-3px)";
         el.style.borderColor = "var(--border-hover)";
         const img = imgRef.current?.querySelector("img") as HTMLImageElement;
         if (img) img.style.transform = "scale(1.04)";
@@ -192,13 +190,11 @@ const ProjectCard = forwardRef<
       onMouseLeave={(e) => {
         const el = e.currentTarget as HTMLElement;
         el.style.boxShadow = "none";
-        el.style.transform = "translateY(0)";
         el.style.borderColor = "var(--border)";
         const img = imgRef.current?.querySelector("img") as HTMLImageElement;
         if (img) img.style.transform = "scale(1)";
       }}
     >
-      {/* Image (order based on even) */}
       {even ? (
         <>
           <ProjectBody proj={proj} />
@@ -210,9 +206,9 @@ const ProjectCard = forwardRef<
           <ProjectBody proj={proj} />
         </>
       )}
-    </div>
+    </motion.div>
   );
-});
+}
 
 const ProjectImage = forwardRef<HTMLDivElement, { proj: (typeof PROJECTS)[0] }>(
   function ProjectImage({ proj }, ref) {
@@ -271,20 +267,13 @@ function ProjectBody({ proj }: { proj: (typeof PROJECTS)[0] }) {
         {proj.title}
       </div>
       <p
-        style={{
-          fontSize: "14px",
-          color: "var(--text-secondary)",
-          lineHeight: 1.7,
-          marginBottom: "18px",
-        }}
+        style={{ fontSize: "14px", color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "18px" }}
       >
         {proj.desc}
       </p>
 
       {/* Metrics */}
-      <div
-        style={{ display: "flex", gap: "20px", marginBottom: "20px", flexWrap: "wrap" }}
-      >
+      <div style={{ display: "flex", gap: "20px", marginBottom: "20px", flexWrap: "wrap" }}>
         {proj.metrics.map((m) => (
           <div
             key={m.label}

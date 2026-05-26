@@ -1,6 +1,8 @@
 "use client";
 
-import { forwardRef, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+
+const ease = [0.4, 0, 0.2, 1] as const;
 
 const CARDS = [
   {
@@ -12,7 +14,6 @@ const CARDS = [
     ),
     title: "Backend Architecture",
     desc: "Designing scalable Node.js microservices, REST & GraphQL APIs, and database schemas that handle complex business logic in production.",
-    delay: "reveal-delay-1",
   },
   {
     icon: (
@@ -24,7 +25,6 @@ const CARDS = [
     ),
     title: "System Integration",
     desc: "Building OAuth flows, CRM connectors, payment gateways (Stripe), and third-party API integrations that work reliably at scale.",
-    delay: "reveal-delay-2",
   },
   {
     icon: (
@@ -35,7 +35,6 @@ const CARDS = [
     ),
     title: "DevOps & Cloud",
     desc: "Docker containerization, AWS infrastructure (ECS, AppRunner, Lambda, S3), CI/CD pipelines, and production incident response.",
-    delay: "reveal-delay-3",
   },
   {
     icon: (
@@ -46,39 +45,35 @@ const CARDS = [
     ),
     title: "AI & LLM Engineering",
     desc: "Building RAG pipelines, AI agents, voice systems, and LLM-powered features. Prompt engineering and token-efficient development with GPT, Claude, and open-source models.",
-    delay: "reveal-delay-3",
   },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 32, scale: 0.97 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.55, ease, delay: i * 0.09 },
+  }),
+};
+
 export default function WhatIDo() {
-  const headerRef = useRef<HTMLDivElement>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  useEffect(() => {
-    const elements = [headerRef.current, ...cardRefs.current].filter(Boolean);
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("visible");
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
-    );
-    elements.forEach((el) => el && observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section id="work" style={{ padding: "120px 0" }}>
       <div style={{ maxWidth: "var(--max-width)", margin: "0 auto", padding: "0 40px" }}>
-        {/* Header */}
+
+        {/* Section header */}
         <div
-          ref={headerRef}
-          className="reveal sec-grid-responsive"
+          className="sec-grid-responsive"
           style={{ display: "grid", gridTemplateColumns: "0.38fr 1fr", gap: "72px" }}
         >
           <div>
-            <div
+            <motion.div
+              initial={{ opacity: 0, x: -16 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, ease }}
               style={{
                 fontFamily: "var(--font-mono)",
                 fontSize: "11px",
@@ -90,8 +85,12 @@ export default function WhatIDo() {
               }}
             >
               Specializations
-            </div>
-            <div
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.6, ease, delay: 0.1 }}
               style={{
                 fontFamily: "var(--font-heading)",
                 fontSize: "32px",
@@ -101,7 +100,7 @@ export default function WhatIDo() {
               }}
             >
               What I do
-            </div>
+            </motion.div>
           </div>
           <div />
         </div>
@@ -117,33 +116,28 @@ export default function WhatIDo() {
           }}
         >
           {CARDS.map((card, i) => (
-            <WIDCard
-              key={card.title}
-              card={card}
-              ref={(el) => { cardRefs.current[i] = el; }}
-            />
+            <WIDCard key={card.title} card={card} index={i} />
           ))}
         </div>
       </div>
-
     </section>
   );
 }
 
-const WIDCard = forwardRef<
-  HTMLDivElement,
-  { card: (typeof CARDS)[0] }
->(function WIDCard({ card }, ref) {
+function WIDCard({ card, index }: { card: (typeof CARDS)[0]; index: number }) {
   return (
-    <div
-      ref={ref}
-      className={`reveal ${card.delay}`}
+    <motion.div
+      custom={index}
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-40px" }}
+      whileHover={{ y: -3, transition: { type: "spring", stiffness: 300, damping: 20 } }}
       style={{
         padding: "32px 28px",
         background: "var(--bg-elevated)",
         border: "1px solid var(--border)",
         borderRadius: "var(--radius)",
-        transition: "all 0.3s",
         position: "relative",
         overflow: "hidden",
         cursor: "default",
@@ -152,7 +146,6 @@ const WIDCard = forwardRef<
         const el = e.currentTarget as HTMLElement;
         el.style.boxShadow = "var(--shadow-md)";
         el.style.borderColor = "var(--border-hover)";
-        el.style.transform = "translateY(-2px)";
         const line = el.querySelector(".top-accent") as HTMLElement;
         if (line) line.style.transform = "scaleX(1)";
       }}
@@ -160,12 +153,11 @@ const WIDCard = forwardRef<
         const el = e.currentTarget as HTMLElement;
         el.style.boxShadow = "none";
         el.style.borderColor = "var(--border)";
-        el.style.transform = "translateY(0)";
         const line = el.querySelector(".top-accent") as HTMLElement;
         if (line) line.style.transform = "scaleX(0)";
       }}
     >
-      {/* Top accent line */}
+      {/* Top accent bar */}
       <div
         className="top-accent"
         style={{
@@ -182,7 +174,11 @@ const WIDCard = forwardRef<
       />
 
       {/* Icon */}
-      <div
+      <motion.div
+        initial={{ scale: 0.8, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.4, delay: index * 0.09 + 0.2, ease }}
         style={{
           width: "40px",
           height: "40px",
@@ -196,7 +192,7 @@ const WIDCard = forwardRef<
         }}
       >
         {card.icon}
-      </div>
+      </motion.div>
 
       <h3
         style={{
@@ -209,15 +205,9 @@ const WIDCard = forwardRef<
       >
         {card.title}
       </h3>
-      <p
-        style={{
-          fontSize: "14px",
-          color: "var(--text-secondary)",
-          lineHeight: 1.65,
-        }}
-      >
+      <p style={{ fontSize: "14px", color: "var(--text-secondary)", lineHeight: 1.65 }}>
         {card.desc}
       </p>
-    </div>
+    </motion.div>
   );
-});
+}

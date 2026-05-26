@@ -1,6 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+
+const ease = [0.4, 0, 0.2, 1] as const;
 
 const EXPERIENCE = [
   {
@@ -31,30 +33,20 @@ const EXPERIENCE = [
 ];
 
 export default function ExperienceSection() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) el.classList.add("visible"); },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section id="experience" style={{ padding: "120px 0" }}>
       <div style={{ maxWidth: "var(--max-width)", margin: "0 auto", padding: "0 40px" }}>
         <div
-          ref={ref}
-          className="reveal sec-grid-responsive"
+          className="sec-grid-responsive"
           style={{ display: "grid", gridTemplateColumns: "0.38fr 1fr", gap: "72px" }}
         >
           {/* Left */}
           <div>
-            <div
+            <motion.div
+              initial={{ opacity: 0, x: -16 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, ease }}
               style={{
                 fontFamily: "var(--font-mono)",
                 fontSize: "11px",
@@ -66,8 +58,12 @@ export default function ExperienceSection() {
               }}
             >
               Experience
-            </div>
-            <div
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.6, ease, delay: 0.1 }}
               style={{
                 fontFamily: "var(--font-heading)",
                 fontSize: "32px",
@@ -79,14 +75,18 @@ export default function ExperienceSection() {
               Where I&apos;ve
               <br />
               worked
-            </div>
+            </motion.div>
           </div>
 
-          {/* Right — exp list */}
+          {/* Right */}
           <div>
             {EXPERIENCE.map((exp, i) => (
-              <div
+              <motion.div
                 key={exp.company}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.6, ease, delay: i * 0.12 }}
                 style={{
                   paddingTop: i === 0 ? 0 : "36px",
                   paddingBottom: "36px",
@@ -124,35 +124,29 @@ export default function ExperienceSection() {
                   </span>
                 </div>
                 <div
-                  style={{
-                    fontSize: "14px",
-                    color: "var(--accent)",
-                    fontWeight: 600,
-                    marginBottom: "10px",
-                  }}
+                  style={{ fontSize: "14px", color: "var(--accent)", fontWeight: 600, marginBottom: "10px" }}
                 >
                   {exp.company}
                 </div>
-                <div
-                  style={{
-                    fontSize: "14px",
-                    color: "var(--text-secondary)",
-                    lineHeight: 1.65,
-                  }}
-                >
+                <div style={{ fontSize: "14px", color: "var(--text-secondary)", lineHeight: 1.65 }}>
                   {exp.desc}
                 </div>
-                <div
-                  style={{
-                    marginTop: "14px",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "6px",
-                  }}
+
+                {/* Highlights — staggered */}
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-20px" }}
+                  variants={{ visible: { transition: { staggerChildren: 0.07, delayChildren: 0.1 } } }}
+                  style={{ marginTop: "14px", display: "flex", flexDirection: "column", gap: "6px" }}
                 >
                   {exp.highlights.map((hl) => (
-                    <div
+                    <motion.div
                       key={hl}
+                      variants={{
+                        hidden: { opacity: 0, x: -12 },
+                        visible: { opacity: 1, x: 0, transition: { duration: 0.45, ease } },
+                      }}
                       style={{
                         fontSize: "13px",
                         color: "var(--text-secondary)",
@@ -174,10 +168,10 @@ export default function ExperienceSection() {
                         }}
                       />
                       {hl}
-                    </div>
+                    </motion.div>
                   ))}
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             ))}
           </div>
         </div>

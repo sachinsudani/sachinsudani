@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useTheme } from "../context/ThemeContext";
 
@@ -14,7 +15,10 @@ export default function SiteNav() {
   }, []);
 
   return (
-    <nav
+    <motion.nav
+      initial={{ opacity: 0, y: -16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1], delay: 0.1 }}
       style={{
         position: "fixed",
         top: 0,
@@ -164,6 +168,6 @@ export default function SiteNav() {
           .nav-links-list { display: none !important; }
         }
       `}</style>
-    </nav>
+    </motion.nav>
   );
 }
