@@ -137,6 +137,10 @@ a {
   .wid-cards-responsive {
     grid-template-columns: 1fr !important;
   }
+
+  .proj-metrics-responsive {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 /* ─── SCROLL REVEAL ─── */

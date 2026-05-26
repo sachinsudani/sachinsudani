@@ -2,14 +2,14 @@
   
 # Hey there! I'm Sachin Sudani 👋
 
-### Mid-Senior Full Stack Developer | Building Scalable Web Applications
+### Full Stack Developer & AI Engineer | Building Systems That Scale
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-6366f1?style=for-the-badge&logo=vercel&logoColor=white)](https://sachinsudani.vercel.app)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/sachinsudani)
+[![Portfolio](https://img.shields.io/badge/Portfolio-0369a1?style=for-the-badge&logo=vercel&logoColor=white)](https://sachinsudani.vercel.app)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/sachin-sudani)
 [![Twitter](https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/sachinsudani)
 [![Email](https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=protonmail&logoColor=white)](mailto:sachin.sudani@protonmail.com)
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=6366F1&center=true&vCenter=true&random=false&width=600&lines=4%2B+Years+of+Full+Stack+Experience;Node.js+%7C+React+%7C+TypeScript+Expert;Building+Production-Ready+Applications;Problem+Solver+%26+AI+Enthusiast" alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=0369A1&center=true&vCenter=true&random=false&width=640&lines=Full+Stack+Developer+%26+AI+Engineer;Node.js+%7C+TypeScript+%7C+AWS+at+Scale;Building+LLM+Agents+%26+RAG+Pipelines;Only+Dev+Shipping+Full+Features+with+AI" alt="Typing SVG" />
 
 </div>
 
@@ -21,22 +21,22 @@
 const sachin = {
     location: "Ahmedabad, Gujarat, India 🇮🇳",
     currentRole: "Mid-Senior Full Stack Developer @ Xenett",
-    experience: "4+ years",
+    experience: "4+ years backend · 3+ years AI/LLM",
     education: "BCA from Saurashtra University",
-    
-    expertise: ["Backend Architecture", "API Design", "Database Optimization"],
-    currentFocus: ["AI Integration", "RAG Systems", "Cloud Infrastructure"],
-    
-    funFact: "Only team member who builds full features with AI tools! 🤖"
+
+    expertise: ["Backend Architecture", "System Integration", "LLM Engineering"],
+    currentFocus: ["AI Agents", "RAG Pipelines", "Voice AI", "Prompt Engineering"],
+
+    funFact: "Only engineer on my team shipping full features end-to-end with AI 🤖"
 };
 ```
 
 ## 💼 What I'm Working On
 
-- 🔭 Building **enterprise accounting software** at [Xenett](https://www.xenett.com)
-- 🌱 Exploring **AI/RAG tools** and integrating them into development workflows
-- 👨‍💻 Maintaining [Moniflo](https://en.moniflo.com) - cloud accounting platform in production
-- ✨ Open to **exciting opportunities** and collaborations
+- 🔭 Leading backend development at [Xenett](https://www.xenett.com) — accounting automation at scale
+- 🤖 Building LLM-powered features: RAG pipelines, AI agents, and voice systems
+- 🌱 Maintaining [Moniflo](https://en.moniflo.com) — cloud accounting platform in production
+- ✨ Open to **Senior Full Stack / AI Engineer** roles and collaborations
 
 ---
 
@@ -58,10 +58,16 @@ const sachin = {
 ![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 
-### Tools & Technologies
+### AI & LLM
+![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)
+![Claude](https://img.shields.io/badge/Claude-CC785C?style=for-the-badge&logo=anthropic&logoColor=white)
+![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white)
+![RAG](https://img.shields.io/badge/RAG_Pipelines-0369a1?style=for-the-badge&logoColor=white)
+
+### Tools & Infrastructure
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
 ![GraphQL](https://img.shields.io/badge/GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
 ![REST API](https://img.shields.io/badge/REST_API-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
 
 </div>
@@ -71,12 +77,12 @@ const sachin = {
 ## 📊 GitHub Stats
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=sachinsudani&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=6366F1&icon_color=06B6D4&count_private=true" height="165" alt="GitHub Stats" />
-  <img src="https://streak-stats.demolab.com/?user=sachinsudani&theme=tokyonight&hide_border=true&background=0D1117&ring=6366F1&fire=06B6D4&currStreakLabel=06B6D4" height="165" alt="GitHub Streak" />
+  <img src="https://github-readme-stats.vercel.app/api?username=sachinsudani&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=0369a1&icon_color=38bdf8&count_private=true" height="165" alt="GitHub Stats" />
+  <img src="https://streak-stats.demolab.com/?user=sachinsudani&theme=tokyonight&hide_border=true&background=0D1117&ring=0369a1&fire=38bdf8&currStreakLabel=38bdf8" height="165" alt="GitHub Streak" />
 </div>
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=sachinsudani&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=6366F1&langs_count=8" alt="Top Languages" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=sachinsudani&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=0369a1&langs_count=8" alt="Top Languages" />
 </div>
 
 ---
@@ -88,18 +94,24 @@ const sachin = {
 <td width="50%">
 
 **🎯 At Xenett (Current)**
-- Delivered 3 Critical CRM Integrations in 1 week
-- Built OAuth Flow (Google & Microsoft) using AI
-- Resolved Production Memory Leak Issue
-- Set up Test Driven Development infrastructure
+- Built Google & Microsoft OAuth using AI — only engineer shipping full features with AI
+- Delivered 3 critical CRM integrations in a single week
+- Diagnosed & fixed production memory leak, P&L/BS SDK→REST migration, payroll issues
+- Set up CI/CD pipelines and TDD infrastructure across all services
+- Led Email & Drive integration with AI-aggressive development
 
 </td>
 <td width="50%">
 
-**🏅 Certifications**
+**🏅 Certifications & Recognition**
 - AWS Summit 2025 Participant
 - AWS Cloud Practitioner Essentials
-- Full Stack Developer (Udemy)
+
+**🌐 Live Projects**
+- [Xenett](https://www.xenett.com) — Enterprise SaaS
+- [Moniflo](https://en.moniflo.com) — Cloud Accounting
+- [The Patidars](https://thepatidars.org) — Community Platform
+- [JDPR & Co. LLP](https://jdprllp.com) — Client Project
 
 </td>
 </tr>
@@ -111,10 +123,10 @@ const sachin = {
 
 <div align="center">
 
-[![Xenett](https://img.shields.io/badge/Xenett-Practice_Management-6366F1?style=for-the-badge)](https://www.xenett.com)
-[![Moniflo](https://img.shields.io/badge/Moniflo-Cloud_Accounting-06B6D4?style=for-the-badge)](https://en.moniflo.com)
-[![Portfolio](https://img.shields.io/badge/Portfolio-Next.js_+_Framer-000000?style=for-the-badge)](https://sachinsudani.vercel.app)
-[![The Patidars](https://img.shields.io/badge/The_Patidars-Community_Platform-FF6B6B?style=for-the-badge)](https://thepatidars.org)
+[![Xenett](https://img.shields.io/badge/Xenett-Enterprise_SaaS-0369a1?style=for-the-badge)](https://www.xenett.com)
+[![Moniflo](https://img.shields.io/badge/Moniflo-Cloud_Accounting-38bdf8?style=for-the-badge)](https://en.moniflo.com)
+[![The Patidars](https://img.shields.io/badge/The_Patidars-Community_Platform-6366f1?style=for-the-badge)](https://thepatidars.org)
+[![JDPR](https://img.shields.io/badge/JDPR_&_Co._LLP-Client_Project-0ea5e9?style=for-the-badge)](https://jdprllp.com)
 
 </div>
 
@@ -124,7 +136,7 @@ const sachin = {
 
 <div align="center">
 
-💼 **Open to** Senior Full Stack Developer roles & exciting collaborations
+💼 **Open to** Senior Full Stack / AI Engineer roles & exciting collaborations
 
 📧 **Email:** sachin.sudani@protonmail.com
 
@@ -136,8 +148,8 @@ const sachin = {
 
 <div align="center">
   
-![Profile Views](https://komarev.com/ghpvc/?username=sachinsudani&color=6366F1&style=for-the-badge&label=PROFILE+VIEWS)
+![Profile Views](https://komarev.com/ghpvc/?username=sachinsudani&color=0369a1&style=for-the-badge&label=PROFILE+VIEWS)
 
-**⭐ From [sachinsudani](https://github.com/sachinsudani) with 💜**
+**⭐ From [sachinsudani](https://github.com/sachinsudani)**
 
 </div>

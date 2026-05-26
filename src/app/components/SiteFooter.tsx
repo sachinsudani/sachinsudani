@@ -27,7 +27,7 @@ export default function SiteFooter() {
         <div style={{ display: "flex", gap: "20px" }}>
           {[
             { label: "GitHub", href: "https://github.com/sachinsudani" },
-            { label: "LinkedIn", href: "https://linkedin.com/in/sachinsudani" },
+            { label: "LinkedIn", href: "https://linkedin.com/in/sachin-sudani" },
             { label: "X", href: "https://x.com/sachinsudani" },
           ].map(({ label, href }) => (
             <a

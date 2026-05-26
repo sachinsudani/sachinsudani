@@ -12,9 +12,9 @@ const PROJECTS = [
     title: "Xenett",
     desc: "Practice management platform automating accounting workflows. I lead backend — building CRM integrations, complex entry systems, and inter-company features for firms.",
     metrics: [
-      { val: "3", label: "CRM Integrations / Week" },
-      { val: "5+", label: "Features Shipped" },
-      { val: "0", label: "Prod Memory Leaks" },
+      { val: "10+", label: "Features Architected" },
+      { val: "Lead", label: "Backend Dev" },
+      { val: "AI-First", label: "Only AI Developer" },
     ],
     tech: ["Node.js", "Express", "MongoDB", "TypeScript", "Microservices", "S3"],
     link: { href: "https://www.xenett.com", label: "Visit Xenett" },
@@ -48,7 +48,7 @@ const PROJECTS = [
   {
     num: "04 — Client Project",
     title: "JDPR & Co. LLP",
-    desc: "End-to-end website for a professional services firm — built solo from design to deployment. Optimized for SEO, performance, and conversion with a clean editorial aesthetic.",
+    desc: "End-to-end website for a chartered accountancy firm — built solo from design to deployment. Optimized for SEO, performance, and conversion with a clean editorial aesthetic.",
     metrics: [
       { val: "Solo", label: "End-to-End" },
       { val: "Live", label: "In Production" },
@@ -273,7 +273,15 @@ function ProjectBody({ proj }: { proj: (typeof PROJECTS)[0] }) {
       </p>
 
       {/* Metrics */}
-      <div style={{ display: "flex", gap: "20px", marginBottom: "20px", flexWrap: "wrap" }}>
+      <div
+        className="proj-metrics-responsive"
+        style={{
+          display: "grid",
+          gridTemplateColumns: `repeat(${proj.metrics.length}, 1fr)`,
+          gap: "12px",
+          marginBottom: "20px",
+        }}
+      >
         {proj.metrics.map((m) => (
           <div
             key={m.label}
@@ -284,7 +292,6 @@ function ProjectBody({ proj }: { proj: (typeof PROJECTS)[0] }) {
               padding: "10px 14px",
               background: "var(--bg-subtle)",
               borderRadius: "10px",
-              minWidth: "100px",
               border: "1px solid var(--border)",
             }}
           >
