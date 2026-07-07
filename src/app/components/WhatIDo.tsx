@@ -100,6 +100,7 @@ export default function WhatIDo() {
               }}
             >
               What I do
+              <div className="sec-underline" />
             </motion.div>
           </div>
           <div />

@@ -122,6 +122,7 @@ export default function ProjectsSection() {
               }}
             >
               Case Studies
+              <div className="sec-underline" />
             </motion.div>
           </div>
           <motion.p

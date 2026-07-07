@@ -75,6 +75,7 @@ export default function ExperienceSection() {
               Where I&apos;ve
               <br />
               worked
+              <div className="sec-underline" />
             </motion.div>
           </div>
 

@@ -47,6 +47,7 @@ export default function ContactSection() {
               Let&apos;s build
               <br />
               something
+              <div className="sec-underline" />
             </motion.div>
           </div>
 
@@ -208,8 +209,8 @@ export default function ContactSection() {
                   alignItems: "center",
                   gap: "8px",
                   padding: "13px 26px",
-                  background: "var(--accent)",
-                  color: "white",
+                  background: "var(--gradient)",
+                  color: "var(--on-accent)",
                   borderRadius: "10px",
                   fontSize: "14px",
                   fontWeight: 600,

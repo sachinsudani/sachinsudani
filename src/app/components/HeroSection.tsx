@@ -49,7 +49,7 @@ export default function HeroSection() {
           height: "700px",
           borderRadius: "50%",
           background: "var(--accent)",
-          opacity: 0.07,
+          opacity: 0.12,
           filter: "blur(140px)",
           top: "-200px",
           left: "-180px",
@@ -66,8 +66,8 @@ export default function HeroSection() {
           width: "500px",
           height: "500px",
           borderRadius: "50%",
-          background: "var(--accent)",
-          opacity: 0.05,
+          background: "var(--accent-2)",
+          opacity: 0.1,
           filter: "blur(120px)",
           bottom: "-100px",
           right: "-100px",
@@ -93,7 +93,7 @@ export default function HeroSection() {
           variants={container}
           initial="hidden"
           animate="visible"
-          style={{ textAlign: "center", maxWidth: "680px", margin: "0 auto" }}
+          style={{ textAlign: "center", maxWidth: "760px", margin: "0 auto" }}
         >
           {/* Label */}
           <motion.div
@@ -142,16 +142,16 @@ export default function HeroSection() {
             variants={fadeUp}
             style={{
               fontFamily: "var(--font-heading)",
-              fontSize: "clamp(40px, 4.8vw, 60px)",
+              fontSize: "clamp(36px, 4.2vw, 54px)",
               fontWeight: 700,
-              lineHeight: 1.08,
+              lineHeight: 1.12,
               letterSpacing: "-0.03em",
               marginBottom: "24px",
             }}
           >
             Sachin Sudani
             <br />
-            <span style={{ color: "var(--accent)" }}>builds systems that scale.</span>
+            <span className="grad-text">builds systems that scale.</span>
           </motion.h1>
 
           {/* Description */}
@@ -250,8 +250,8 @@ export default function HeroSection() {
                 alignItems: "center",
                 gap: "8px",
                 padding: "13px 26px",
-                background: "var(--accent)",
-                color: "white",
+                background: "var(--gradient)",
+                color: "var(--on-accent)",
                 border: "none",
                 borderRadius: "10px",
                 fontSize: "14px",

@@ -53,6 +53,7 @@ export default function AboutSection() {
               }}
             >
               Background
+              <div className="sec-underline" />
             </motion.div>
           </div>
 

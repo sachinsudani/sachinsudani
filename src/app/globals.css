@@ -11,35 +11,41 @@
 }
 
 [data-theme="light"] {
-  --bg: #faf9f7;
+  --bg: #fafbfd;
   --bg-elevated: #ffffff;
-  --bg-subtle: #f3f1ee;
-  --text: #111111;
-  --text-secondary: #555555;
-  --text-muted: #999999;
-  --accent: #0369a1;
-  --accent-light: rgba(3, 105, 161, 0.1);
-  --border: #e4e2dd;
-  --border-hover: #ccc9c2;
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.08);
+  --bg-subtle: #f1f3f7;
+  --text: #0f1219;
+  --text-secondary: #4b5262;
+  --text-muted: #8b93a5;
+  --accent: #2563eb;
+  --accent-2: #7c3aed;
+  --accent-light: rgba(37, 99, 235, 0.09);
+  --gradient: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  --on-accent: #ffffff;
+  --border: #e3e6ec;
+  --border-hover: #c8cdd8;
+  --shadow-sm: 0 1px 3px rgba(15, 18, 25, 0.04);
+  --shadow-md: 0 4px 20px rgba(15, 18, 25, 0.07);
+  --shadow-lg: 0 12px 40px rgba(15, 18, 25, 0.09);
 }
 
 [data-theme="dark"] {
-  --bg: #0e0e0e;
-  --bg-elevated: #1a1a1a;
-  --bg-subtle: #151515;
-  --text: #f0f0f0;
-  --text-secondary: #a0a0a0;
-  --text-muted: #666666;
-  --accent: #38bdf8;
-  --accent-light: rgba(56, 189, 248, 0.12);
-  --border: #2a2a2a;
-  --border-hover: #3a3a3a;
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
-  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.4);
+  --bg: #0a0c11;
+  --bg-elevated: #12151d;
+  --bg-subtle: #0e1117;
+  --text: #f2f4f8;
+  --text-secondary: #a4abbd;
+  --text-muted: #6b7280;
+  --accent: #60a5fa;
+  --accent-2: #a78bfa;
+  --accent-light: rgba(96, 165, 250, 0.12);
+  --gradient: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+  --on-accent: #0a0c11;
+  --border: #232734;
+  --border-hover: #333849;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.45);
 }
 
 * {
@@ -66,7 +72,24 @@ body {
 
 ::selection {
   background: var(--accent);
-  color: white;
+  color: var(--on-accent);
+}
+
+/* ─── ACCENT UTILITIES ─── */
+.grad-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.sec-underline {
+  width: 44px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--gradient);
+  margin-top: 14px;
 }
 
 a {
