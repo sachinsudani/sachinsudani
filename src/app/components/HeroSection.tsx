@@ -40,6 +40,22 @@ export default function HeroSection() {
         overflow: "hidden",
       }}
     >
+      {/* Dot-grid texture */}
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage: "radial-gradient(circle, var(--border-hover) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+          maskImage: "radial-gradient(ellipse 65% 60% at 50% 42%, black 30%, transparent 75%)",
+          WebkitMaskImage: "radial-gradient(ellipse 65% 60% at 50% 42%, black 30%, transparent 75%)",
+          opacity: 0.6,
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+
       {/* Ambient orbs */}
       <motion.div
         aria-hidden
@@ -95,46 +111,55 @@ export default function HeroSection() {
           animate="visible"
           style={{ textAlign: "center", maxWidth: "760px", margin: "0 auto" }}
         >
-          {/* Label */}
+          {/* Availability badge */}
           <motion.div
             variants={fadeDown}
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: "12px",
-              color: "var(--accent)",
-              textTransform: "uppercase",
-              letterSpacing: "0.14em",
-              fontWeight: 500,
-              marginBottom: "20px",
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-              justifyContent: "center",
-            }}
+            style={{ display: "flex", justifyContent: "center", marginBottom: "24px" }}
           >
             <span
               style={{
-                width: "7px",
-                height: "7px",
-                borderRadius: "50%",
-                background: "var(--accent)",
-                position: "relative",
-                display: "inline-block",
-                flexShrink: 0,
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "9px",
+                padding: "7px 16px",
+                borderRadius: "100px",
+                border: "1px solid var(--border)",
+                background: "var(--bg-elevated)",
+                fontFamily: "var(--font-mono)",
+                fontSize: "11px",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                fontWeight: 500,
+                color: "var(--text-secondary)",
+                boxShadow: "var(--shadow-sm)",
               }}
             >
               <span
                 style={{
-                  position: "absolute",
-                  inset: "-3px",
+                  width: "7px",
+                  height: "7px",
                   borderRadius: "50%",
-                  background: "var(--accent)",
-                  opacity: 0.4,
-                  animation: "pulse-ring 2s ease-out infinite",
+                  background: "#10b981",
+                  position: "relative",
+                  display: "inline-block",
+                  flexShrink: 0,
                 }}
-              />
+              >
+                <span
+                  style={{
+                    position: "absolute",
+                    inset: "-3px",
+                    borderRadius: "50%",
+                    background: "#10b981",
+                    opacity: 0.4,
+                    animation: "pulse-ring 2s ease-out infinite",
+                  }}
+                />
+              </span>
+              Open to opportunities
+              <span style={{ color: "var(--border-hover)" }}>·</span>
+              <span style={{ color: "var(--accent)" }}>Full Stack + AI</span>
             </span>
-            Full Stack Developer · AI Engineer
           </motion.div>
 
           {/* Heading — each line staggered */}
@@ -201,11 +226,11 @@ export default function HeroSection() {
                 }}
               >
                 <span
+                  className="grad-text"
                   style={{
                     fontFamily: "var(--font-heading)",
                     fontSize: "16px",
                     fontWeight: 700,
-                    color: "var(--accent)",
                     letterSpacing: "-0.02em",
                   }}
                 >
@@ -254,6 +279,7 @@ export default function HeroSection() {
                 color: "var(--on-accent)",
                 border: "none",
                 borderRadius: "10px",
+                boxShadow: "0 4px 18px color-mix(in srgb, var(--accent) 30%, transparent)",
                 fontSize: "14px",
                 fontWeight: 600,
                 fontFamily: "var(--font-body)",

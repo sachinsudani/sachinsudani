@@ -57,7 +57,7 @@ export default function ExperienceSection() {
                 marginBottom: "12px",
               }}
             >
-              Experience
+              01 — Experience
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -79,8 +79,22 @@ export default function ExperienceSection() {
             </motion.div>
           </div>
 
-          {/* Right */}
-          <div>
+          {/* Right — timeline */}
+          <div style={{ position: "relative" }}>
+            {/* Vertical gradient line */}
+            <div
+              aria-hidden
+              style={{
+                position: "absolute",
+                left: "5px",
+                top: "10px",
+                bottom: "10px",
+                width: "2px",
+                borderRadius: "2px",
+                background:
+                  "linear-gradient(180deg, var(--accent) 0%, var(--accent-2) 55%, transparent 100%)",
+              }}
+            />
             {EXPERIENCE.map((exp, i) => (
               <motion.div
                 key={exp.company}
@@ -89,11 +103,25 @@ export default function ExperienceSection() {
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.6, ease, delay: i * 0.12 }}
                 style={{
-                  paddingTop: i === 0 ? 0 : "36px",
-                  paddingBottom: "36px",
-                  borderBottom: i < EXPERIENCE.length - 1 ? "1px solid var(--border)" : "none",
+                  position: "relative",
+                  paddingLeft: "36px",
+                  paddingBottom: i < EXPERIENCE.length - 1 ? "48px" : 0,
                 }}
               >
+                {/* Timeline dot */}
+                <span
+                  aria-hidden
+                  style={{
+                    position: "absolute",
+                    left: 0,
+                    top: "5px",
+                    width: "12px",
+                    height: "12px",
+                    borderRadius: "50%",
+                    background: "var(--gradient)",
+                    boxShadow: "0 0 0 4px var(--accent-light)",
+                  }}
+                />
                 <div
                   style={{
                     display: "flex",

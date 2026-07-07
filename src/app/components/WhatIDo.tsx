@@ -84,7 +84,7 @@ export default function WhatIDo() {
                 marginBottom: "12px",
               }}
             >
-              Specializations
+              03 — Specializations
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -167,7 +167,7 @@ function WIDCard({ card, index }: { card: (typeof CARDS)[0]; index: number }) {
           left: 0,
           right: 0,
           height: "2px",
-          background: "var(--accent)",
+          background: "var(--gradient)",
           transform: "scaleX(0)",
           transformOrigin: "left",
           transition: "transform 0.4s ease",
@@ -181,11 +181,12 @@ function WIDCard({ card, index }: { card: (typeof CARDS)[0]; index: number }) {
         viewport={{ once: true }}
         transition={{ duration: 0.4, delay: index * 0.09 + 0.2, ease }}
         style={{
-          width: "40px",
-          height: "40px",
-          borderRadius: "10px",
-          background: "var(--accent-light)",
-          color: "var(--accent)",
+          width: "42px",
+          height: "42px",
+          borderRadius: "11px",
+          background: "var(--gradient)",
+          color: "var(--on-accent)",
+          boxShadow: "0 4px 14px color-mix(in srgb, var(--accent) 25%, transparent)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",

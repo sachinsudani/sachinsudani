@@ -37,7 +37,7 @@ export default function AboutSection() {
                 marginBottom: "12px",
               }}
             >
-              About
+              04 — About
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 16 }}

@@ -106,7 +106,7 @@ export default function ProjectsSection() {
                 marginBottom: "12px",
               }}
             >
-              Selected Work
+              02 — Selected Work
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -213,23 +213,77 @@ function ProjectCard({
 
 const ProjectImage = forwardRef<HTMLDivElement, { proj: (typeof PROJECTS)[0] }>(
   function ProjectImage({ proj }, ref) {
+    const url = proj.link
+      ? new URL(proj.link.href).hostname
+      : `${proj.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}.dev`;
     return (
       <div
         ref={ref}
         style={{
-          aspectRatio: "16/10",
-          overflow: "hidden",
+          display: "flex",
+          flexDirection: "column",
           background: "var(--bg-subtle)",
-          position: "relative",
+          overflow: "hidden",
         }}
       >
-        <Image
-          src={proj.image}
-          alt={proj.title}
-          fill
-          sizes="(max-width: 900px) 100vw, 55vw"
-          style={{ objectFit: "cover", transition: "transform 0.6s ease" }}
-        />
+        {/* Browser chrome */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "6px",
+            padding: "10px 14px",
+            background: "var(--bg-elevated)",
+            borderBottom: "1px solid var(--border)",
+          }}
+        >
+          {["#f87171", "#fbbf24", "#34d399"].map((c) => (
+            <span
+              key={c}
+              style={{
+                width: "10px",
+                height: "10px",
+                borderRadius: "50%",
+                background: c,
+                opacity: 0.85,
+                flexShrink: 0,
+              }}
+            />
+          ))}
+          <span
+            style={{
+              marginLeft: "10px",
+              padding: "3px 14px",
+              borderRadius: "6px",
+              background: "var(--bg-subtle)",
+              border: "1px solid var(--border)",
+              fontFamily: "var(--font-mono)",
+              fontSize: "10px",
+              color: "var(--text-muted)",
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+          >
+            {url}
+          </span>
+        </div>
+        <div
+          style={{
+            position: "relative",
+            flex: 1,
+            aspectRatio: "16/10",
+            overflow: "hidden",
+          }}
+        >
+          <Image
+            src={proj.image}
+            alt={proj.title}
+            fill
+            sizes="(max-width: 900px) 100vw, 55vw"
+            style={{ objectFit: "cover", transition: "transform 0.6s ease" }}
+          />
+        </div>
       </div>
     );
   }
@@ -297,11 +351,11 @@ function ProjectBody({ proj }: { proj: (typeof PROJECTS)[0] }) {
             }}
           >
             <span
+              className="grad-text"
               style={{
                 fontFamily: "var(--font-heading)",
                 fontSize: "18px",
                 fontWeight: 700,
-                color: "var(--accent)",
                 letterSpacing: "-0.02em",
               }}
             >

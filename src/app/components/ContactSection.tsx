@@ -9,8 +9,34 @@ export default function ContactSection() {
     <section id="contact" style={{ padding: "120px 0" }}>
       <div style={{ maxWidth: "var(--max-width)", margin: "0 auto", padding: "0 40px" }}>
         <div
+          style={{
+            position: "relative",
+            overflow: "hidden",
+            background: "var(--bg-elevated)",
+            border: "1px solid var(--border)",
+            borderRadius: "20px",
+            padding: "56px 48px",
+          }}
+        >
+          {/* Gradient glow */}
+          <div
+            aria-hidden
+            style={{
+              position: "absolute",
+              top: "-140px",
+              right: "-120px",
+              width: "360px",
+              height: "360px",
+              borderRadius: "50%",
+              background: "var(--gradient)",
+              opacity: 0.14,
+              filter: "blur(90px)",
+              pointerEvents: "none",
+            }}
+          />
+        <div
           className="sec-grid-responsive"
-          style={{ display: "grid", gridTemplateColumns: "0.38fr 1fr", gap: "72px" }}
+          style={{ display: "grid", gridTemplateColumns: "0.38fr 1fr", gap: "72px", position: "relative" }}
         >
           {/* Left */}
           <div>
@@ -29,7 +55,7 @@ export default function ContactSection() {
                 marginBottom: "12px",
               }}
             >
-              Contact
+              05 — Contact
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -225,6 +251,7 @@ export default function ContactSection() {
               </motion.a>
             </div>
           </motion.div>
+        </div>
         </div>
       </div>
     </section>
