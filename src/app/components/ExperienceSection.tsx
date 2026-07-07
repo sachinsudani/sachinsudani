@@ -16,6 +16,8 @@ const EXPERIENCE = [
       "Designed and implemented Inter Company, Entries Checklist & Trend, and Clearing Account features end-to-end",
       "Diagnosed and fixed production P&L/BS SDK→REST migration, memory leak, and payroll issues",
       "Set up CI/CD pipelines across all services; configured Playwright, Copilot, and Claude",
+      "Architected & shipped real-time email webhooks for Outlook (Graph) & Gmail (Pub/Sub) to production — serverless Lambda → SQS → socket pipeline with daily subscription auto-renewal, DLQs, and per-env HMAC/OIDC security",
+      "Built zero-API-call live inbox updates — one socket handler set for both providers upserting IndexedDB & in-memory stores directly, idempotent against duplicate provider events",
       "Led Email & Drive integration with AI-aggressive development, maximizing token efficiency",
     ],
   },

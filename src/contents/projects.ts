@@ -5,7 +5,7 @@ export const projects: Project[] = [
         title: "Xenett",
         description:
             "A practice management software to automate accounting workflow and reviews.",
-        technologies: ["NodeJS", "ExpressJS", "MongoDB", "TypeScript", "MicroServices", "S3", "SES"],
+        technologies: ["NodeJS", "ExpressJS", "MongoDB", "TypeScript", "MicroServices", "AWS Lambda", "SQS", "GCP Pub/Sub", "S3", "SES"],
         githubLink: "",
         demoLink: "https://www.xenett.com",
         image: "/projects/xenett.png",
