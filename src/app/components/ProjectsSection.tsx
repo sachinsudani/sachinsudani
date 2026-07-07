@@ -10,13 +10,13 @@ const PROJECTS = [
   {
     num: "01 — Enterprise SaaS",
     title: "Xenett",
-    desc: "Practice management platform automating accounting workflows. I lead backend — building CRM integrations, complex entry systems, and inter-company features for firms.",
+    desc: "Practice management platform automating accounting workflows. I lead backend — real-time email sync for Outlook & Gmail, CRM integrations, and inter-company accounting features.",
     metrics: [
       { val: "10+", label: "Features Architected" },
-      { val: "Lead", label: "Backend Dev" },
+      { val: "Real-time", label: "Email Sync (2 Providers)" },
       { val: "AI-First", label: "Only AI Developer" },
     ],
-    tech: ["Node.js", "Express", "MongoDB", "TypeScript", "Microservices", "S3"],
+    tech: ["Node.js", "TypeScript", "MongoDB", "AWS Lambda", "SQS", "GCP Pub/Sub", "Microservices"],
     link: { href: "https://www.xenett.com", label: "Visit Xenett" },
     image: "/projects/xenett.png",
   },

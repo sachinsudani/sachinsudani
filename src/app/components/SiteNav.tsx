@@ -71,10 +71,11 @@ export default function SiteNav() {
             className="nav-links-list"
           >
             {[
-              { label: "About", href: "#about" },
-              { label: "What I Do", href: "#work" },
               { label: "Experience", href: "#experience" },
               { label: "Projects", href: "#projects" },
+              { label: "What I Do", href: "#work" },
+              { label: "About", href: "#about" },
+              { label: "Resume", href: "/Sachin-Sudani-Resume.pdf" },
             ].map(({ label, href }) => (
               <li key={href}>
                 <a

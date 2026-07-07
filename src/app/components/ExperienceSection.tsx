@@ -11,14 +11,12 @@ const EXPERIENCE = [
     period: "2024 — Present",
     desc: "Practice management software for accounting workflow automation.",
     highlights: [
+      "Architected real-time email sync for Outlook & Gmail — 6-Lambda serverless pipeline (SQS, Pub/Sub) with hand-built HMAC/OIDC security, zero mail lost in production",
       "Built Google & Microsoft OAuth using AI — only team member shipping full features with AI",
       "Delivered 3 critical CRM integrations within a single week",
-      "Designed and implemented Inter Company, Entries Checklist & Trend, and Clearing Account features end-to-end",
-      "Diagnosed and fixed production P&L/BS SDK→REST migration, memory leak, and payroll issues",
+      "Designed Inter Company, Entries Checklist & Trend, and Clearing Account features end-to-end",
+      "Diagnosed and fixed production memory leak, payroll, and P&L/BS SDK→REST migration issues",
       "Set up CI/CD pipelines across all services; configured Playwright, Copilot, and Claude",
-      "Architected real-time email sync for Outlook (Graph change notifications) & Gmail (Pub/Sub) — 6 Lambdas, per-mailbox FIFO ordering, cursor-based incremental sync that replayed 5 days of backlog with zero mail lost",
-      "Implemented the security boundary by hand: HMAC clientState verification (Outlook) and OIDC JWT verification with native crypto (Gmail), with per-environment isolation that fails closed",
-      "Built zero-API-call live inbox updates — one idempotent socket handler set for both providers upserting IndexedDB & in-memory stores directly",
     ],
   },
   {

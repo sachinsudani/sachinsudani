@@ -28,13 +28,13 @@ export default function Home() {
       <main>
         <HeroSection />
         <Divider />
-        <AboutSection />
-        <Divider />
-        <WhatIDo />
-        <Divider />
         <ExperienceSection />
         <Divider />
         <ProjectsSection />
+        <Divider />
+        <WhatIDo />
+        <Divider />
+        <AboutSection />
         <Divider />
         <ContactSection />
       </main>

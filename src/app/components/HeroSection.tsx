@@ -149,10 +149,9 @@ export default function HeroSection() {
               marginBottom: "24px",
             }}
           >
-            I build systems that
+            Sachin Sudani
             <br />
-            scale —{" "}
-            <span style={{ color: "var(--accent)" }}>with AI.</span>
+            <span style={{ color: "var(--accent)" }}>builds systems that scale.</span>
           </motion.h1>
 
           {/* Description */}
@@ -162,15 +161,70 @@ export default function HeroSection() {
               fontSize: "17px",
               color: "var(--text-secondary)",
               lineHeight: 1.75,
-              maxWidth: "460px",
-              margin: "0 auto 36px",
+              maxWidth: "500px",
+              margin: "0 auto 28px",
             }}
           >
-            4+ years shipping production Node.js, TypeScript &amp; AWS at scale —
-            plus 3+ years building LLM-powered features, AI agents, and voice
-            systems. Currently at Xenett, engineering automation with clean
-            architecture and AI at the core.
+            Full stack developer shipping production Node.js, TypeScript &amp; AWS —
+            plus LLM-powered features, AI agents, and voice systems. Currently
+            Mid-Senior Full Stack Developer at Xenett.
           </motion.p>
+
+          {/* Quick facts — the 8-second recruiter scan */}
+          <motion.div
+            variants={fadeUp}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "10px",
+              flexWrap: "wrap",
+              marginBottom: "36px",
+            }}
+          >
+            {[
+              { val: "4+", label: "Years Experience" },
+              { val: "10+", label: "Features Architected" },
+              { val: "AWS", label: "Cloud Practitioner" },
+              { val: "Ahmedabad, IN", label: "Remote-friendly" },
+            ].map((f) => (
+              <div
+                key={f.label}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "2px",
+                  padding: "10px 18px",
+                  background: "var(--bg-elevated)",
+                  border: "1px solid var(--border)",
+                  borderRadius: "10px",
+                  minWidth: "120px",
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontSize: "16px",
+                    fontWeight: 700,
+                    color: "var(--accent)",
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  {f.val}
+                </span>
+                <span
+                  style={{
+                    fontSize: "10px",
+                    color: "var(--text-muted)",
+                    fontWeight: 500,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.06em",
+                  }}
+                >
+                  {f.label}
+                </span>
+              </div>
+            ))}
+          </motion.div>
 
           {/* Buttons */}
           <motion.div
@@ -187,7 +241,8 @@ export default function HeroSection() {
           >
             <motion.a
               variants={btnItem}
-              href="#projects"
+              href="/Sachin-Sudani-Resume.pdf"
+              download
               whileHover={{ y: -2, boxShadow: "0 8px 24px color-mix(in srgb, var(--accent) 30%, transparent)" }}
               whileTap={{ scale: 0.97 }}
               style={{
@@ -206,16 +261,15 @@ export default function HeroSection() {
                 textDecoration: "none",
               }}
             >
-              View case studies
               <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
+              Download Resume
             </motion.a>
 
             <motion.a
               variants={btnItem}
-              href="/Sachin-Sudani-Resume.pdf"
-              download
+              href="#experience"
               whileTap={{ scale: 0.97 }}
               style={{
                 display: "inline-flex",
@@ -244,10 +298,10 @@ export default function HeroSection() {
                 el.style.color = "var(--text)";
               }}
             >
+              View experience
               <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
               </svg>
-              Resume
             </motion.a>
 
             <motion.a
