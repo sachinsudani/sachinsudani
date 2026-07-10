@@ -12,11 +12,12 @@ const EXPERIENCE = [
     desc: "Practice management software for accounting workflow automation.",
     highlights: [
       "Architected real-time email sync for Outlook & Gmail — 6-Lambda serverless pipeline (SQS, Pub/Sub) with hand-built HMAC/OIDC security, zero mail lost in production",
+      "Stabilized an unrunnable E2E test suite — from OOM crashes and hundreds of flaky failures to 100% green, with zero production code changes",
+      "Gated every deploy on unit + E2E tests in CI/CD and cut the test stage ~57% (10.5 → 4.5 min) with parallel steps and Jest sharding",
       "Built Google & Microsoft OAuth using AI — only team member shipping full features with AI",
       "Delivered 3 critical CRM integrations within a single week",
       "Designed Inter Company, Entries Checklist & Trend, and Clearing Account features end-to-end",
       "Diagnosed and fixed production memory leak, payroll, and P&L/BS SDK→REST migration issues",
-      "Set up CI/CD pipelines across all services; configured Playwright, Copilot, and Claude",
     ],
   },
   {

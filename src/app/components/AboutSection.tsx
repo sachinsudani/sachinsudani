@@ -6,7 +6,7 @@ const ease = [0.4, 0, 0.2, 1] as const;
 
 const TECH = [
   "Node.js", "Express", "TypeScript", "React", "Next.js",
-  "MongoDB", "PostgreSQL", "Docker", "AWS", "GraphQL", "REST APIs", "CI/CD",
+  "MongoDB", "PostgreSQL", "Docker", "AWS", "GraphQL", "REST APIs", "Jest", "CI/CD",
   "LLM / RAG", "Embeddings", "AI Agents", "Voice AI", "Prompt Engineering",
 ];
 
